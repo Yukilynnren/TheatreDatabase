@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <title>Attend List</title>
+</head>
+<body>
+<center>
+<h1>Attend List</h1>
+<form action="/submit" method="get">
+  <input type="checkbox" name="listaddtend" value="withCustomer">Customer
+  <input type="checkbox" name="listaddtend" value="withShowing">Showing
+  <input type="checkbox" name="listaddtend" value="withMovie">Movie <br>
+  sorted by
+  <select>
+	<option value="high2low">High to Low</option>
+	<option value="low2high">Low to High</option>
+  </select><br>
+  <input type="submit" value="Submit">
+</form>
+</center>
+</body>
+</html>
