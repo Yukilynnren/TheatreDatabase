@@ -3,17 +3,37 @@
 <head>
 	<meta charset="utf-8">
 	<title>Staff Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
 <h1>Staff Menu</h1>
-<div><a href="/movie">Movie</a></div>
-<div><a href="/genre">Genre</a></div>
-<div><a href="/room">Room</a></div>
-<div><a href="/showing">Showing</a></div>
-<div><a href="/customer">Customer</a></div>
-<div><a href="/attend">Attend</a></div>
-<div><a href="/indexMenu">Back to Main Menu</a></div>
+<div>
+	<p class="movie">
+		<a href="/movie"><class="btn btn-lg btn-default">Movie</a>
+	</p>
+	<p class="genre">
+		<a href="/genre"><class="btn btn-lg btn-default">Genre</a>
+	</p>
+	<p class="room">
+		<a href="/room"><class="btn btn-lg btn-default">Room</a>
+	</p>
+	<p class="showing">
+		<a href="/showing"><class="btn btn-lg btn-default">Showing</a>
+	</p>
+	<p class="customer">
+		<a href="/customer"><class="btn btn-lg btn-default">Customer</a>
+	</p>
+	<p class="attend">
+		<a href="/attend"><class="btn btn-lg btn-default">Attend</a>
+	</p>
+	<p class="back">
+		<a href="/"><class="btn btn-lg btn-default">Back</a>
+	</p>
+
+</div>
 </center>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </html>
