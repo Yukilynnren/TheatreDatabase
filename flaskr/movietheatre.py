@@ -29,12 +29,12 @@ def frontend():
 def moivepage():
     return render_template('movie.html')
 
+# add movie
 @app.route("/addmovie")
 def addmoivepage():
     return render_template('addmovie.html')
 
-# add a movie (ID, name, year)
-@app.route("/submit", methods=["POST"])
+@app.route("/addMovie", methods=["POST"])
 def addMovie():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
@@ -49,7 +49,55 @@ def addMovie():
     return render_template('addmovie.html', idMovie=request.form['idMovie'], 
         MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
 
-# delete a movie by name
+# delete movie
+@app.route("/deletemovie")
+def deletemoivepage():
+    return render_template('deletemovie.html')
+
+@app.route("/deleteMovie", methods=["POST"])
+def deleteMovie():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    delete_stmt = (
+        "DELETE FROM `Movie` WHERE MovieName=%s" #single value
+        )
+    data = (request.form['MovieName'],) # force string to become tupple
+    cursor.execute(delete_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('deletemovie.html', MovieName=request.form['MovieName'])
+
+# update movie
+@app.route("/updatemovie")
+def updatemoivepage():
+    return render_template('updatemovie.html')
+
+@app.route("/updateMovie", methods=["POST"])
+def updateMovie():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    insert_stmt = (
+        "INSERT INTO `Movie` (idMovie,MovieName,MovieYear)"
+        "VALUES (%s, %s, %s)"
+        )
+    data = (request.form['idMovie'], request.form['MovieName'], request.form['MovieYear'])
+    cursor.execute(insert_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('updatemovie.html', idMovie=request.form['idMovie'], 
+        MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
+
+# list movie
+@app.route("/listmovie")
+def listmoivepage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from Movie")
+    cursor.execute(query)
+    movies=cursor.fetchall()
+    cnx.close()
+    return render_template('listmovie.html', movies=movies)
+
 
 
 if __name__ == "__main__":

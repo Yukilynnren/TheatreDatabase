@@ -9,16 +9,12 @@
 <body>
 <center>
 <h1>Movie</h1>
-<h2>Add Movie</h2>
-<form action="/addMovie" method="post">
-     Movie ID:<br>
-     <input type="value" name="idMovie" value=""><br>
-     Movie Name:<br>
-     <input type="text" name="MovieName" value=""><br>
-     Year Released<br>
-     <input type="value" name="MovieYear" value=""><br><br>
-     <input type="submit" value="Add">
-</form>
+<h2>List Movie</h2>
+<div>
+{% for movie in movies %}
+    <span>{{ movie.0 }}{{ movie.1 }} {{ movie.2 }}</span><br />
+{% endfor %}
+</div
 <div><a href="/movie">Back</a></div>
 </center>
 </body>
