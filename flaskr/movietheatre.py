@@ -61,7 +61,7 @@ def deleteMovie():
     delete_stmt = (
         "DELETE FROM `Movie` WHERE MovieName=%s" #single value
         )
-    data = (request.form['MovieName'],) # force string to become tupple
+    data = (request.form['MovieName'],) # force string to become tuple
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
@@ -76,12 +76,11 @@ def updatemoivepage():
 def updateMovie():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    insert_stmt = (
-        "UPDATE `Movie` SET (idMovie,MovieName,MovieYear)"
-        "VALUES (%s, %s, %s)"
+    update_stmt = (
+        "UPDATE `Movie` SET MovieName=%s, MovieYear=%s WHERE idMovie=%s"
         )
     data = (request.form['idMovie'], request.form['MovieName'], request.form['MovieYear'])
-    cursor.execute(insert_stmt, data)
+    cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
     return render_template('updatemovie.html', idMovie=request.form['idMovie'], 
@@ -92,11 +91,67 @@ def updateMovie():
 def listmoivepage():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    query = ("SELECT * from Movie")
+    query = ("SELECT * from `Movie` ORDER BY MovieName")
     cursor.execute(query)
     movies=cursor.fetchall()
     cnx.close()
     return render_template('listmovie.html', movies=movies)
+
+
+# genre
+@app.route("/genre")
+def genrepage():
+    return render_template('genre.html')
+
+# add genre
+@app.route("/addgenre")
+def addgenrepage():
+    return render_template('addgenre.html')
+
+@app.route("/addGenre", methods=["POST"])
+def addGenre():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    insert_stmt = (
+        "INSERT INTO `Genre` (Genre, Movie_idMovie)"
+        "VALUES (%s, %s)"
+        )
+    data = (request.form['Movie_idMovie'], request.form['Genre'])
+    cursor.execute(insert_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('addgenre.html', Movie_idMovie=request.form['Movie_idMovie'], 
+        MovieName=request.form['Genre'])
+
+# delete genre
+@app.route("/deletegenre")
+def deletegenrepage():
+    return render_template('deletegenre.html')
+
+@app.route("/deleteGenre", methods=["POST"])
+def deleteGenre():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    delete_stmt = (
+        "DELETE FROM `Genre` WHERE Movie_idMovie=%s" #single value
+        )
+    data = (request.form['Movie_idMovie'],) # force string to become tuple
+    cursor.execute(delete_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('deletegenre.html', Movie_idMovie=request.form['Movie_idMovie'])
+
+
+# list genre
+@app.route("/listgenre")
+def listgenrepage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from `Genre` ORDER BY Genre")
+    cursor.execute(query)
+    genres=cursor.fetchall()
+    cnx.close()
+    return render_template('listgenre.html', genres=genres)
 
 
 

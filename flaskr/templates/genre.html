@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>Genre Menu</title>
+	<meta charset="utf-8">
+	<title>Genre Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
 <h1>Genre Menu</h1>
-<div><a href="addgenre.html">Add Genre</a></div>
-<div><a href="deletegenre.html">Delete Genre</a></div>
-<div><a href="divstgenre.html">divst Genre</a></div>
-<div><a href="backend.html">Back</a></div>
+<div>
+	<p class="addgenre">
+		<a href="/addgenre"><class="btn btn-lg btn-default">Add Genre</a>
+	</p>
+	<p class="deletegenre">
+		<a href="/deletegenre"><class="btn btn-lg btn-default">Delete Genre</a>
+	<p class="listgenre">
+		<a href="/listgenre"><class="btn btn-lg btn-default">List Genre</a>
+	</p>
+	<p class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</p>
+
+</div>
 </center>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </html>
