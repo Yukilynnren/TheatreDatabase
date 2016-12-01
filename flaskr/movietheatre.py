@@ -77,7 +77,7 @@ def updateMovie():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     insert_stmt = (
-        "INSERT INTO `Movie` (idMovie,MovieName,MovieYear)"
+        "UPDATE `Movie` SET (idMovie,MovieName,MovieYear)"
         "VALUES (%s, %s, %s)"
         )
     data = (request.form['idMovie'], request.form['MovieName'], request.form['MovieYear'])
