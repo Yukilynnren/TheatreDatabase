@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>profile</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+
+<body>
+<center>
+<h1>Your history</h1>
+
+<div>
+<table border = "2">
+<td>Showing time</td><td>Movie Title</td><td>Rating</td>
+{% for history in historys %}
+	<tr>
+    <span><td>{{ history.0 }}</td><td>{{ history.1 }}</td><td>{{ history.2 }}</td></span><br />
+    </tr>
+{% endfor %}
+</table>
+</div>
+
+</center>
+
+<div><a href="/history">Back</a></div>
+
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

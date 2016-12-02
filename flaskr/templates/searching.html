@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search a showing</title>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+
+<body>
+<center>
+<h1>Search a showing</h1>
+<form action="/search" method="post">
+Choose the genre<select name="genre" onchange="getTheValue">
+{% for genre in genres %}
+    <option value="{{ genre.0 }}"><span>{{ genre.0 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+Choose the date range<select name="starttime" onchange="getTheValue">
+{% for start in starts %}
+    <option value="{{ start.0 }}"><span>{{ start.0 }}</span></option><br />
+{% endfor %}
+</select><br/>
+<select name="endtime" onchange="getTheValue">
+{% for end in ends %}
+    <option value="{{ end.0 }}"><span>{{ end.0 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+
+available<input type="checkbox" name="haveseat"> <br>  
+
+
+Movie title:<br>
+     <input type="text" name="moviename"><br>
+
+
+<input type="submit" value="Click here to search a showing"><br/>
+</form>
+
+
+</center>
+
+<div>
+    <a href="/frontend">Back</a>
+</div>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

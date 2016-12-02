@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search a showing</title>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+
+<body>
+<center>
+<div>
+{% if seat == 0 %}
+    Sorry, no seats left!<br>
+{% else %}
+	<table border = "2">
+	<td>Movie name</td><td>Genre</td><td>Date time</td><td>Room number</td><br />
+	{% for selectedShowing in selectedShowings %}
+		<tr>
+		<span><td>{{ selectedShowing.3 }}</td><td>{{ selectedShowing.1 }}</td><td>{{ selectedShowing.2 }}</td><td>{{ selectedShowing.4 }}</td></span><br />
+		<tr>
+	{% endfor %}
+{% endif %}
+
+
+
+</div>
+
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

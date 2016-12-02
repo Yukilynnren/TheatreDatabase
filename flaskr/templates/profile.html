@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Customer profile</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+
+<!--<p>Choose your name  <select id="Name">
+  <option value="Will Beldman">Will Beldman</option>
+  <option value="Bill Clinton">Bill Clinton</option>
+  <option value="Hillary Clinton">Hillary Clinton</option>
+  <option value="Donald Trump">Donald Trump</option>
+  <option value="Gary Johnson">Gary Johnson</option>
+  <option value="Jill Stein">Jill Stein</option>
+  <option value="Barack Obama">Barack Obama</option>
+</select></p>-->
+
+<!--<center><br /><br />
+<form action="/choose" method="get">  
+<label>Choose your name to view your profile</label><br /><br /> 
+<select name="Name" onchange="javascript:if (this.options[this.selectedIndex].value != '')
+ window.open(this.options[this.selectedIndex].value);this.options[0].selected;">  
+  <option value="Will Beldman">Will Beldman</option>
+  <option value="Bill Clinton">Bill Clinton</option>
+  <option value="Hillary Clinton">Hillary Clinton</option>
+  <option value="Donald Trump">Donald Trump</option>
+  <option value="Gary Johnson">Gary Johnson</option>
+  <option value="Jill Stein">Jill Stein</option>
+  <option value="Barack Obama">Barack Obama</option>
+</select>  
+</form> 
+</center>-->
+
+<center>
+	<h1>Choose your name to view your profile</h1>
+<div>
+<form action="/choose" method="post">
+<select name="idCustomer" onchange="getTheValue">
+{% for customer in customers %}
+    <option value="{{ customer.0 }}"><span>{{ customer.1 }} {{ customer.2 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+<input type="submit" value="submit">
+</form>
+</div>
+</center>
+
+<div>
+    <a href="/frontend">Back</a><br />
+</div>
+
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>
