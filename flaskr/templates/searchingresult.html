@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Search a showing</title>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+
+<body>
+
+<center>
+{% if seat == 0 %}
+    Sorry, no seats left!<br>
+{% else %}
+	<span>{{ Movie name }}:  {{ Genre }}  {{ Date time }}  {{ Room number }}</span><br />
+	{% for selectedShowing in selectedShowings %}
+		<span>{{ selectedShowing.3 }}:  {{ selectedShowing.1 }}  {{ selectedShowing.2 }}  {{ selectedShowing.4 }}</span><br />
+	{% endfor %}
+{% endif %}
+
+
+
+</center>
+
+
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

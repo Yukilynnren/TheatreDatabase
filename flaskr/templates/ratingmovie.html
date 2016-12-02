@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rate a showing</title>
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+<body>
+<center>
+<h1>What do you think about the showing?</h1>
+<div>
+<form action="/updaterating" method="post">
+
+Give<select name="star">
+  <option value="1">★</option>
+  <option value="2">★★</option>
+  <option value="3">★★★</option>
+  <option value="4">★★★★</option>
+  <option value="5">★★★★★</option>
+</select>
+
+To the showing<select name="idMovie" onchange="getTheValue">
+{% for movie in movies %}
+    <option value="{{ movie.0 }}"><span>{{ movie.1 }} {{ movie.2 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+<input type="submit" value="Click here to rate">
+</form>
+</div>
+</center>
+
+<div>
+    <a href="/rating">You haven't watched those movies?</a><br />
+</div>
+
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

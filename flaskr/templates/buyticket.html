@@ -3,9 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title>Buy a ticket</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+
 </head>
+
 <body>
-<center>
+
+<!--<center>
 <p>Choose the movie  <select name="Name">
   <option value="Star Wars">Star Wars</option>
   <option value="Up">Up</option>
@@ -21,6 +26,32 @@
   <option value="Back To The Future">Back To The Future</option>
 </select></p>
 <button>Buy the ticket</button>
+</center>-->
+
+<center>
+<div>
+<form action="/buyticketsubmit" method="post">
+Choose your name<select name="idCustomer" onchange="getTheValue">
+{% for customer in customers %}
+    <option value="{{ customer.0 }}"><span>{{ customer.1 }} {{ customer.2 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+Choose the showing<select name="idShowing" onchange="getTheValue">
+{% for showing in showings %}
+    <option value="{{ showing.0 }}"><span>{{ showing.1 }} {{ showing.2 }} {{ showing.3 }} {{ showing.4 }} {{ showing.5 }}</span></option><br />
+{% endfor %}
+</select><br/>
+
+<input type="submit" value="Click here to buy a ticket"><br/>
+</form>
+</div>
 </center>
+
+<div>
+    <a href="/frontend">Back</a>
+</div>
+
+
 </body>
 </html>
