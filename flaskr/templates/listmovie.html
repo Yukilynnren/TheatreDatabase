@@ -9,13 +9,22 @@
 <body>
 <center>
 <h1>Movie</h1>
-<h2>List Movie</h2></center>
+<h2>List Movie</h2>
 <div>
+<table border = "2">
+<tr>
+	<th> Movie ID </th>
+	<th> Movie Name </th>
+	<th> Year Released </th>
+</tr>
 {% for movie in movies %}
-    <span>{{ movie.0 }}    <i>{{ movie.1 }}</i>      {{ movie.2 }}</span><br />
+	<tr>
+    <span><td>{{ movie.0 }}</td><td><i>{{ movie.1 }}</i> </td><td>{{ movie.2 }}</td></span>
+    </tr>
 {% endfor %}
+</table><br>
 </div>
-<center><div><a href="/movie">Back</a></div>
+<div><a href="/movie">Back</a></div>
 </center>
 </body>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>

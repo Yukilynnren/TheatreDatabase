@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Customer Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Customer Menu</h1>
+<div>
+	<p class="addcustomer">
+		<a href="/addcustomer"><class="btn btn-lg btn-default">Add Customer</a>
+	</p>
+	<p class="deletecustomer">
+		<a href="/deletecustomer"><class="btn btn-lg btn-default">Delete Customer</a>
+	</p>
+	<p class="updatecustomer">
+		<a href="/updatecustomer"><class="btn btn-lg btn-default">Update Customer</a>
+	</p>
+	<p class="listcustomer">
+		<a href="/listcustomer"><class="btn btn-lg btn-default">List Customer</a>
+	</p>
+	<p class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</p>
+
+</div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

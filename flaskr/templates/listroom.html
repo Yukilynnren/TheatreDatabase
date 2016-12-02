@@ -9,13 +9,21 @@
 <body>
 <center>
 <h1>Room</h1>
-<h2>List Room</h2></center>
+<h2>List Room</h2>
 <div>
+<table border="2">
+<tr>
+	<th> Room Number </th>
+	<th> Capacity </th>
+</tr>
 {% for room in rooms %}
-    <span><b>{{ room.0 }}</b>     {{ room.1}}</span><br />
+	<tr>
+    <span><td><b>{{ room.0 }}</b></td><td>{{ room.1}}</span></td>
+    </tr>
 {% endfor %}
+</table><br>
 </div>
-<center><div><a href="/room">Back</a></div>
+<div><a href="/room">Back</a></div>
 </center>
 </body>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
