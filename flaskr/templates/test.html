@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>Check your history</title>
+<script type="text/javascript">
+function getIndex()
+  {
+  var x=document.getElementById("mySelect")
+  alert(x.selectedIndex)
+  }
+</script>
 </head>
 <body>
+
+<form>
 <p>Choose your name  <select name="Name">
   <option value="Will Beldman">Will Beldman</option>
   <option value="Bill Clinton">Bill Clinton</option>
@@ -14,6 +21,10 @@
   <option value="Jill Stein">Jill Stein</option>
   <option value="Barack Obama">Barack Obama</option>
 </select></p>
-<button>Check your history</button>
+<br /><br />
+<input type="button" onclick="getIndex()"
+value="check your profile">
+</form>
+
 </body>
 </html>

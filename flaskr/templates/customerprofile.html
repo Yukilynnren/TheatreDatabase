@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>profile</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+
+
+<body>
+<center>
+<h1>Your profile</h1>
+
+<div>
+<table border = "2">
+<td>Customer ID</td><td>First Name</td><td>Last Name</td><td>Email Address</td><td>Sex</td>
+{% for customer in customers %}
+	<tr>
+    <span><td>{{ customer.0 }}</td><td>{{ customer.1 }}</td><td>{{ customer.2 }}</td><td>{{ customer.3 }}</td><td>{{ customer.4 }}</td></span><br />
+    </tr>
+{% endfor %}
+</table>
+</div>
+
+</center>
+
+<div><a href="/profile">Back</a></div>
+
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

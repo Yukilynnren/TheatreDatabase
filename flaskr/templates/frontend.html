@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Customer Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Please Select What You Want To Do</h1>
+<div>
+	<p class="searching">
+		<a href="/searching"><class="btn btn-lg btn-default">Search a showing</a>
+	</p>
+	<p class="buyticket">
+		<a href="/buyticket"><class="btn btn-lg btn-default">Buy a ticket</a>
+	</p>
+	<p class="rating">
+		<a href="/rating"><class="btn btn-lg btn-default">Rate a showing</a>
+	</p>
+	<p class="history">
+		<a href="/history"><class="btn btn-lg btn-default">Check your history</a>
+	</p>
+	<p class="profile">
+		<a href="/profile"><class="btn btn-lg btn-default">Customer profile</a>
+	</p>
+	<p class="back">
+		<a href="/"><class="btn btn-lg btn-default">Back to Main Menu</a>
+	</p>
+
+</div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>
