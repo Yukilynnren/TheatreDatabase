@@ -228,6 +228,83 @@ def listroompage():
     return render_template('listroom.html', rooms=rooms)
 
 
+# showing
+@app.route("/showing")
+def showingpage():
+    return render_template('showing.html')
+
+# add showing
+@app.route("/addshowing")
+def addshowingpage():
+    return render_template('addshowing.html')
+
+@app.route("/addShowing", methods=["POST"])
+def addShowing():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    insert_stmt = (
+        "INSERT INTO `Showing` (idShowing,ShowingDateTime,Movie_idMovie,TheatreRoom_RoomNumber,TicketPrice)"
+        "VALUES (%s, %s, %s, %s, %s)"
+        )
+    data = (request.form['idShowing'], request.form['ShowingDateTime'], request.form['Movie_idMovie'],
+        request.form['TheatreRoom_RoomNumber'], request.form['TicketPrice'])
+    cursor.execute(insert_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('addshowing.html', idShowing=request.form['idShowing'], ShowingDateTime=request.form['ShowingDateTime'],
+        Movie_idMovie=request.form['Movie_idMovie'], TheatreRoom_RoomNumber=request.form['TheatreRoom_RoomNumber'],
+        TicketPrice=request.form['TicketPrice'])
+
+# delete showing
+@app.route("/deleteshowing")
+def deleteshowingpage():
+    return render_template('deleteshowing.html')
+
+@app.route("/deleteShowing", methods=["POST"])
+def deleteShowing():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    delete_stmt = (
+        "DELETE FROM `Showing` WHERE idShowing=%s" #single value
+        )
+    data = (request.form['idShowing'],) # force string to become tuple
+    cursor.execute(delete_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('deleteshowing.html', idShowing=request.form['idShowing'])
+
+# update showing
+@app.route("/updateshowing")
+def updateshowingpage():
+    return render_template('updateshowing.html')
+
+@app.route("/updateShowing", methods=["POST"])
+def updateShowing():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    update_stmt = (
+        "UPDATE `Showing` SET ShowingDateTime=%s, TicketPrice=%s WHERE idShowing=%s"
+        )
+    data = (request.form['idShowing'], request.form['ShowingDateTime'], request.form['TicketPrice'])
+    cursor.execute(update_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('updateshowing.html', idShowing=request.form['idShowing'],
+        ShowingDateTime=request.form['ShowingDateTime'],
+        TicketPrice=request.form['TicketPrice'])
+
+# list showing
+@app.route("/listshowing")
+def listshowingpage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from `Showing` ORDER BY ShowingDateTime")
+    cursor.execute(query)
+    showings =cursor.fetchall()
+    cnx.close()
+    return render_template('listshowing.html', showings=showings)
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Showing Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Showing</h1>
+<h2>Update Showing</h2>
+<p class="p">
+    Update a Showing by its ID
+        <class="btn btn-lg btn-default">
+</p>
+<form action="/updateShowing" method="post">
+     Showing ID:<br>
+     <input type="value" name="idShowing" value=""><br>
+     Date and Time:<br>
+     <input type="value" name="ShowingDateTime" value=""><br>
+     Ticket Price:<br>
+     <input type="value" name="TicketPrice" value=""><br><br />
+     <input type="submit" value="Update">
+</form>
+<div><a href="/showing">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

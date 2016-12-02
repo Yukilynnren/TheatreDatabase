@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Showing Menu</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Showing</h1>
+<h2>Add Showingcf</h2>
+<form action="/addShowing" method="post">
+     Showing ID:<br>
+     <input type="value" name="idShowing" value=""><br>
+     Date and Time:<br>
+     <input type="value" name="ShowingDateTime" value=""><br>
+     Movie ID:<br>
+     <input type="value" name="Movie_idMovie" value=""><br>
+     Room Number:<br>
+     <input type="value" name="TheatreRoom_RoomNumber" value=""><br>
+     Ticket Price:<br>
+     <input type="value" name="TicketPrice" value=""><br><br />
+     <input type="submit" value="Add">
+</form>
+<div><a href="/showing">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

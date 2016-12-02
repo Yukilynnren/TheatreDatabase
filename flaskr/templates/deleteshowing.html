@@ -2,22 +2,23 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Room Menu</title>
+    <title>Showing Menu</title>
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
-<h1>Room</h1>
-<h2>Add Room</h2>
-<form action="/addRoom" method="post">
-     Room Number:<br>
-     <input type="value" name="RoomNumber" value=""><br>
-     Capacity:<br>
-     <input type="value" name="Capacity" value=""><br><br />
-     <input type="submit" value="Add">
+<h1>Showing</h1>
+<h2>Delete Showing</h2>
+<p class="p">
+    Delete a Showing by input its ID
+		<class="btn btn-lg btn-default">
+</p>
+<form action="/deleteShowing" method="post">
+     <input type="text" name="idShowing" value="">
+     <input type="submit" value="Delete">
 </form>
-<div><a href="/room">Back</a></div>
+<div><a href="/showing">Back</a></div>
 </center>
 </body>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>

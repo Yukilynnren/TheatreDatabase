@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>Showing Menu</title>
+	<meta charset="utf-8">
+	<title>Showing Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
 <h1>Showing Menu</h1>
-<div><a href="addshowing.html">Add Showing</a></div>
-<div><a href="deleteshowing.html">Delete Showing</a></div>
-<div><a href="updateshowing.html">Update Showing</a></div>
-<div><a href="divstshowing.html">divst Showing</a></div>
-<div><a href="backend.html">Back</a></div>
+<div>
+	<p class="addshowing">
+		<a href="/addshowing"><class="btn btn-lg btn-default">Add Showing</a>
+	</p>
+	<p class="deleteshowing">
+		<a href="/deleteshowing"><class="btn btn-lg btn-default">Delete Showing</a>
+	</p>
+	<p class="updateshowing">
+		<a href="/updateshowing"><class="btn btn-lg btn-default">Update Showing</a>
+	</p>
+	<p class="listshowing">
+		<a href="/listshowing"><class="btn btn-lg btn-default">List Showing</a>
+	</p>
+	<p class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</p>
+
+</div>
 </center>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </html>
