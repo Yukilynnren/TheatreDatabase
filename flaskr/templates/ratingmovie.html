@@ -12,6 +12,9 @@
 <h1>What do you think about the showing?</h1>
 <div>
 <form action="/updaterating" method="post">
+<div>
+<input type="hidden" name="idCustomer" value="{{ movies.0 .0}}">
+</div>
 
 Give<select name="star">
   <option value="1">★</option>
@@ -23,7 +26,7 @@ Give<select name="star">
 
 To the showing<select name="idMovie" onchange="getTheValue">
 {% for movie in movies %}
-    <option value="{{ movie.0 }}"><span>{{ movie.1 }} {{ movie.2 }}</span></option><br />
+    <option value="{{ movie.1 }}"><span>{{ movie.2 }} {{ movie.3 }}</span></option><br />
 {% endfor %}
 </select><br/>
 

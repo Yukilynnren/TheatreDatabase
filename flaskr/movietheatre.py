@@ -4,7 +4,7 @@ from mysql.connector.constants import ClientFlag
 
 config = {
     'user': 'root',
-    #'password': 'love',
+    'password': 'love',
     'database': 'MovieTheatre'
 }
 
@@ -88,7 +88,7 @@ def rating():
 def ratingmovie():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    select_stmt = ("SELECT idShowing,ShowingDateTime,MovieName from `Movie` join `Customer` join `Attend` join `Showing` WHERE idCustomer=%s AND Customer.idCustomer=Attend.Customer_idCustomer AND Movie.idMovie=Showing.Movie_idMovie AND Showing.idShowing=Attend.Showing_idShowing")
+    select_stmt = ("SELECT idCustomer,idShowing,ShowingDateTime,MovieName from `Movie` join `Customer` join `Attend` join `Showing` WHERE idCustomer=%s AND Customer.idCustomer=Attend.Customer_idCustomer AND Movie.idMovie=Showing.Movie_idMovie AND Showing.idShowing=Attend.Showing_idShowing")
     data = (request.form['idCustomer'],)
     cursor.execute(select_stmt, data)
     movies=cursor.fetchall()
@@ -102,8 +102,8 @@ def updateMovie():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     #how to update in join
-    update_stmt = ("UPDATE `Attend` SET Attend.Rating=%s WHERE Attend.Customer_idCustomer=" + str('idC') + "AND Attend.Showing_idShowing=%s")
-    data = (request.form['star'], request.form['idMovie'])
+    update_stmt = ("UPDATE `Attend` SET Attend.Rating=%s WHERE Attend.Customer_idCustomer=%s AND Attend.Showing_idShowing=%s")
+    data = (request.form['star'], request.form['idCustomer'], request.form['idMovie'])
     try:
         cursor.execute(update_stmt, data)
         cnx.commit()
