@@ -15,11 +15,12 @@
 <tr>
 	<th>Customer ID</th>
 	<th>Showing ID</th>
+	<th>Showing Date and Time</th>
 	<th>Rating</th>
 </tr>
 {% for attend in attends %}
 	<tr>
-    <span><td>{{ attend.0 }}</td><td>{{ attend.1 }}</td><td>{{ attend.2 }}</td><td>{{ attend.3 }}</td><td>{{ attend.4 }}</td></span>
+    <span><td>{{ attend.0 }}</td><td>{{ attend.1 }}</td><td>{{ attend.2 }}</td><td>{{ attend.3 }}</td></span>
     </tr>
 {% endfor %}
 </table><br>

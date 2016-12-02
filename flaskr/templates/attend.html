@@ -12,20 +12,18 @@
 <div>
 <img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
 </div><br />
-<form action="/listattend" method="get">
-  <input type="checkbox" name="listaddtend" value="withCustomer">Customer
-  <input type="checkbox" name="listaddtend" value="withShowing">Showing
-  <input type="checkbox" name="listaddtend" value="withMovie">Movie <br><br />
-  sorted by
-  <select>
-	<option value="high2low">High to Low</option>
-	<option value="low2high">Low to High</option>
-  </select><br><br />
-  <input type="submit" value="Submit">
-  <button class="back">
+<form action="/attendCustomer" method="post">
+  <input type="submit" value="All attended Customers">
+</form><br/>
+<form action="/attendShowing" method="post">
+  <input type="submit" value="All attended Showings">
+</form><br/>
+<form action="/attendMovie" method="post">
+  <input type="submit" value="All attended Movies">
+</form><br/>
+<button class="back">
     <a href="/backend"><class="btn btn-lg btn-default">Back</a>
-  </button>
-</form>
+</button>
 </center>
 </body>
 </html>

@@ -46,7 +46,7 @@ def addMovie():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addmovie.html', idMovie=request.form['idMovie'], 
+    return render_template('listmovie.html', idMovie=request.form['idMovie'], 
         MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
 
 # delete movie
@@ -65,7 +65,7 @@ def deleteMovie():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deletemovie.html', MovieName=request.form['MovieName'])
+    return render_template('listmovie.html', MovieName=request.form['MovieName'])
 
 # update movie
 @app.route("/updatemovie")
@@ -83,7 +83,7 @@ def updateMovie():
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('updatemovie.html', idMovie=request.form['idMovie'], 
+    return render_template('listmovie.html', idMovie=request.form['idMovie'], 
         MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
 
 # list movie
@@ -120,7 +120,7 @@ def addGenre():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addgenre.html', Movie_idMovie=request.form['Genre'], 
+    return render_template('listgenre.html', Movie_idMovie=request.form['Genre'], 
         MovieName=request.form['Movie_idMovie'])
 
 # delete genre
@@ -139,7 +139,7 @@ def deleteGenre():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deletegenre.html', Movie_idMovie=request.form['Movie_idMovie'],
+    return render_template('listgenre.html', Movie_idMovie=request.form['Movie_idMovie'],
         Genre=request.form['Genre'])
 
 
@@ -176,13 +176,13 @@ def addRoom():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addroom.html', RoomNmber=request.form['RoomNumber'], 
+    return render_template('listroom.html', RoomNmber=request.form['RoomNumber'], 
         Capacity=request.form['Capacity'])
 
 # delete room
 @app.route("/deleteroom")
 def deleteroompage():
-    return render_template('deleteroom.html')
+    return render_template('listroom.html')
 
 @app.route("/deleteRoom", methods=["POST"])
 def deleteRoom():
@@ -195,7 +195,7 @@ def deleteRoom():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deleteroom.html', RoomNumber=request.form['RoomNumber'])
+    return render_template('listroom.html', RoomNumber=request.form['RoomNumber'])
 
 # update room
 @app.route("/updateroom")
@@ -213,7 +213,7 @@ def updateRoom():
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('updateroom.html', Capacity=request.form['Capacity'], 
+    return render_template('listroom.html', Capacity=request.form['Capacity'], 
         RoomNumber=request.form['RoomNumber'])
 
 # list room
@@ -251,7 +251,7 @@ def addShowing():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addshowing.html', idShowing=request.form['idShowing'], ShowingDateTime=request.form['ShowingDateTime'],
+    return render_template('listshowing.html', idShowing=request.form['idShowing'], ShowingDateTime=request.form['ShowingDateTime'],
         Movie_idMovie=request.form['Movie_idMovie'], TheatreRoom_RoomNumber=request.form['TheatreRoom_RoomNumber'],
         TicketPrice=request.form['TicketPrice'])
 
@@ -271,7 +271,7 @@ def deleteShowing():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deleteshowing.html', idShowing=request.form['idShowing'])
+    return render_template('listshowing.html', idShowing=request.form['idShowing'])
 
 # update showing
 @app.route("/updateshowing")
@@ -289,7 +289,7 @@ def updateShowing():
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('updateshowing.html', idShowing=request.form['idShowing'],
+    return render_template('listshowing.html', idShowing=request.form['idShowing'],
         ShowingDateTime=request.form['ShowingDateTime'],
         TicketPrice=request.form['TicketPrice'])
 
@@ -328,7 +328,7 @@ def addCustomer():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addcustomer.html', idCustomer=request.form['idCustomer'],
+    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'],
         FirstName=request.form['FirstName'], LastName=request.form['LastName'],
         EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
 
@@ -348,7 +348,7 @@ def deleteCustomer():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deletecustomer.html', idCustomer=request.form['idCustomer'])
+    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'])
 
 # update customer
 @app.route("/updatecustomer")
@@ -367,7 +367,7 @@ def updateCustomer():
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('updatecustomer.html', idCustomer=request.form['idCustomer'],
+    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'],
         EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
 
 # list customer
@@ -388,15 +388,35 @@ def attendpage():
     return render_template('attend.html')
 
 # list attend
-@app.route("/listattend")
-def listattendpage():
+@app.route("/attendCustomer", methods=["POST"])
+def listattendCustomer():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    query = ("SELECT * from `Attend`")
+    query = ("SELECT Customer_idCustomer,LastName,FirstName,Showing_idShowing,Rating from `Attend` join `Customer` where Attend.Customer_idCustomer=Customer.idCustomer ORDER BY Rating")
     cursor.execute(query)
     attends=cursor.fetchall()
     cnx.close()
-    return render_template('listattend.html', attends=attends)
+    return render_template('listattendcustomer.html', attends=attends)
+
+@app.route("/attendShowing", methods=["POST"])
+def listattendShowing():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT Customer_idCustomer,Showing_idShowing,ShowingDateTime,Rating from `Attend` join `Showing` where Attend.Showing_idShowing=Showing.idShowing ORDER BY Rating")
+    cursor.execute(query)
+    attends=cursor.fetchall()
+    cnx.close()
+    return render_template('listattendshowing.html', attends=attends)
+
+@app.route("/attendMovie", methods=["POST"])
+def listattendMoive():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT Customer_idCustomer,Showing_idShowing,MovieName,Rating from (SELECT idShowing,MovieName from `Showing` join `Movie` where Showing.Movie_idMovie=Movie.idMovie) as temp join `Attend` where temp.idShowing=Attend.Showing_idShowing ORDER BY Rating")
+    cursor.execute(query)
+    attends=cursor.fetchall()
+    cnx.close()
+    return render_template('listattendmovie.html', attends=attends)
 
 
 
