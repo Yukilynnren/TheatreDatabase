@@ -305,6 +305,86 @@ def listshowingpage():
     return render_template('listshowing.html', showings=showings)
 
 
+# Customer
+@app.route("/staff_customer")
+def customerpage():
+    return render_template('staff_customer.html')
+
+# add room
+@app.route("/addcustomer")
+def addcustomerpage():
+    return render_template('addcustomer.html')
+
+@app.route("/addCustomer", methods=["POST"])
+def addCustomer():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    insert_stmt = (
+        "INSERT INTO `Customer` (idCustomer,FirstName,LastName,EmailAddress,Sex)"
+        "VALUES (%s, %s, %s, %s, %s)"
+        )
+    data = (request.form['idCustomer'], request.form['FirstName'], request.form['LastName'],
+        request.form['EmailAddress'], request.form['Sex'])
+    cursor.execute(insert_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('addcustomer.html', idCustomer=request.form['idCustomer'],
+        FirstName=request.form['FirstName'], LastName=request.form['LastName'],
+        EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
+
+# delete customer
+@app.route("/deletecustomer")
+def deletcustomerpage():
+    return render_template('deletecustomer.html')
+
+@app.route("/deleteCustomer", methods=["POST"])
+def deleteCustomer():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    delete_stmt = (
+        "DELETE FROM `Customer` WHERE idCustomer=%s" #single value
+        )
+    data = (request.form['idCustomer'],) # force string to become tuple
+    cursor.execute(delete_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('deletecustomer.html', idCustomer=request.form['idCustomer'])
+
+# update customer
+@app.route("/updatecustomer")
+def updatecustomerpage():
+    return render_template('updatecustomer.html')
+
+@app.route("/updateCustomer", methods=["POST"])
+def updateCustomer():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    update_stmt = (
+        "UPDATE `Customer` SET EmailAddress=%s, Sex=%s WHERE idCustomer=%s"
+        )
+    data = (request.form['idCustomer'],
+        request.form['EmailAddress'], request.form['Sex'])
+    cursor.execute(update_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('updatecustomer.html', idCustomer=request.form['idCustomer'],
+        EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
+
+# list customer
+@app.route("/listcustomer")
+def listcustomerpage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from `Customer` ORDER BY LastName")
+    cursor.execute(query)
+    customers=cursor.fetchall()
+    cnx.close()
+    return render_template('listcustomer.html', customers=customers)
+
+
+
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
