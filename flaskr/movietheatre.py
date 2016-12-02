@@ -148,7 +148,7 @@ def deleteGenre():
 def listgenrepage():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    query = ("SELECT * from `Genre` ORDER BY Genre")
+    query = ("SELECT MovieName,Genre from `Movie` join `Genre` WHERE Movie.idMovie=Genre.Movie_idMovie ORDER BY Genre")
     cursor.execute(query)
     genres=cursor.fetchall()
     cnx.close()
