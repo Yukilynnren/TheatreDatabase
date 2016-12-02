@@ -5,19 +5,27 @@
 	<title> Movie _(:з」∠)_ Theatre </title>
 	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
 	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	</script>
 </head>
 <body>
 <center>
 <h1>Movie _(:з」∠)_ Theatre</h1>
+<p>
+Operated by Angel and Rainy
+</p>
+<div>
+<img src ="{{url_for('static', filename='jpg/bilibili.jpg')}}" class="img-responsive" alt="Cinque Terre" width="304" height="236">
 </div>
-	<p class="back">
+</div>
+	<button class="back">
 		<a href="/backend"><class="btn btn-lg btn-default">Staff</a>
-	</p>
-	<p class="front">
+	</button>
+	<button class="front">
 		<a href="/frontend"><class="btn btn-lg btn-default">Customer</a>
-	</p>
+	</button>
 </div>
 </center>
 </body>
+<div class="se-pre-con"></div>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </html>
