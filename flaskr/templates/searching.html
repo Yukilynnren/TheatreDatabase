@@ -20,12 +20,12 @@ Choose the genre<select name="genre" onchange="getTheValue">
 
 Choose the date range<select name="starttime" onchange="getTheValue">
 {% for start in starts %}
-    <option value="{{ start.0 }}"><span>{{ start.1 }}</span></option><br />
+    <option value="{{ start.0 }}"><span>{{ start.0 }}</span></option><br />
 {% endfor %}
 </select><br/>
 <select name="endtime" onchange="getTheValue">
 {% for end in ends %}
-    <option value="{{ end.0 }}"><span>{{ end.1 }}</span></option><br />
+    <option value="{{ end.0 }}"><span>{{ end.0 }}</span></option><br />
 {% endfor %}
 </select><br/>
 
@@ -34,7 +34,7 @@ available<input type="checkbox" name="haveseat"> <br>
 
 
 Movie title:<br>
-     <input type="text" name="moviename" value = ""><br>
+     <input type="text" name="moviename"><br>
 
 
 <input type="submit" value="Click here to search a showing"><br/>

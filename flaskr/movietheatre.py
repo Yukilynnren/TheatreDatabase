@@ -157,13 +157,13 @@ def buyticketsubmit():
 def search():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    query1 = ("SELECT * from `Genre`")
+    query1 = ("SELECT DISTINCT Genre from `Genre`")
     cursor.execute(query1)
     genres=cursor.fetchall()
-    query2 = ("SELECT Showing.idShowing,Showing.ShowingDateTime from `Showing` ORDER BY ShowingDateTime")
+    query2 = ("SELECT DISTINCT ShowingDateTime from `Showing` ORDER BY ShowingDateTime")
     cursor.execute(query2)
     starts=cursor.fetchall()
-    query3 = ("SELECT Showing.idShowing,Showing.ShowingDateTime from `Showing` ORDER BY ShowingDateTime")
+    query3 = ("SELECT DISTINCT ShowingDateTime from `Showing` ORDER BY ShowingDateTime")
     cursor.execute(query3)
     ends=cursor.fetchall()
     cnx.close()
@@ -174,27 +174,33 @@ def searchsubmit():
     seat=0
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
+    #print("test1")
     if(request.form.get('haveseat')):
+        print("test2")
         selectedShowings=[]
         query1=("SELECT idShowing,Genre,ShowingDateTime,MovieName,TheatreRoom_RoomNumber from `Showing`,`Movie`,`Genre` WHERE Showing.Movie_idMovie=Movie.idMovie AND Genre.movie_idMovie=Movie.idMovie AND Genre.Genre=%s AND Showing.ShowingDateTime>=%s AND Showing.ShowingDateTime<=%s AND Movie.MovieName=%s")
         data=(request.form['genre'], request.form['starttime'], request.form['endtime'], request.form['moviename'])
-        cursor.execute(query1,data)
+        cursor.execute(query1,(data))
+        #print("test2")
         selectedShowingTmp = cursor.fetchall()
         for tmp in selectedShowingTmp:
+            #print("test3")
             idShowing=str(tmp[0])
             query2='SELECT Capacity from `TheatreRoom`, `Showing` WHERE TheatreRoom.RoomNumber=Showing.TheatreRoom_RoomNumber AND Showing.idShowing='+idShowing+') - (SELECT COUNT(*) from `Attend` WHERE Showing_idShowing='+idShowing+')'
             cursor.execute(query2)
+            #print("test4")
             leftSeat=cursor.fetchall()
             if(leftSeat[0][0]>0):
+                #print("test5")
                 seat=1
                 selectedShowings.append(tmp)
 
     else:
         seat=0
         selectedShowings=[]
-        query1=("SELECT idShowing,Genre,ShowingDateTime,MovieName,TheatreRoom_RoomNumber from `Showing`,`Movie`,`Genre` WHERE Showing.Movie_idMovie=Movie.idMovie AND Genre.movie_idMovie=Movie.idMovie AND Genre.Genre=%s AND Showing.ShowingDateTime>=%s AND Showing.ShowingDateTime<=%s AND Movie.MovieName=%s")
+        query=("SELECT idShowing,Genre,ShowingDateTime,MovieName,TheatreRoom_RoomNumber from `Showing`,`Movie`,`Genre` WHERE Showing.Movie_idMovie=Movie.idMovie AND Genre.movie_idMovie=Movie.idMovie AND Genre.Genre=%s AND Showing.ShowingDateTime>=%s AND Showing.ShowingDateTime<=%s AND Movie.MovieName=%s")
         data=(request.form['genre'], request.form['starttime'], request.form['endtime'], request.form['moviename'])
-        cursor.execute(query1,data)
+        cursor.execute(query,(data))
         selectedShowings = cursor.fetchall()
         if(selectedShowings):
             seat=1
