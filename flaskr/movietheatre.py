@@ -374,7 +374,7 @@ def updateCustomer():
 def listcustomerpage():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
-    query = ("SELECT * from `Customer` ORDER BY LastName")
+    query = ("SELECT idCustomer, FirstName, LastName, EmailAddress, CAST(Sex AS CHAR CHARACTER SET utf8) AS Sex from `Customer` ORDER BY LastName")
     cursor.execute(query)
     customers=cursor.fetchall()
     cnx.close()
@@ -416,6 +416,27 @@ def listattendMoive():
     attends=cursor.fetchall()
     cnx.close()
     return render_template('listattendmovie.html', attends=attends)
+
+
+# injection Attack
+@app.route('/injectionattack')
+def injectionAttack():
+    return render_template('injectionattack.html')
+    
+@app.route('/sqlinjectionattack', methods=["POST"])
+def sqlInjectionAttack():
+
+    LastName = request.form['LastName']
+
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT idCustomer, FirstName, LastName, EmailAddress, CAST(Sex AS CHAR CHARACTER SET utf8) AS Sex FROM Customer WHERE LastName = '" + LastName + "'")
+    cursor.execute(query)
+    customers = cursor.fetchall()
+    cnx.commit()
+    cnx.close()
+    
+    return render_template('sqlinjectionattack.html', customers=customers)
 
 
 
