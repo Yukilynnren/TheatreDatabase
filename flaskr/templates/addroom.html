@@ -2,26 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Movie Menu</title>
+    <title>Genre Room</title>
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
-<h1>Genre</h1>
-<h2>Delete Genre</h2>
-<p class="p">
-    Delete a genre from a movie
-		<class="btn btn-lg btn-default">
-</p>
-<form action="/deleteGenre" method="post">
-	 Movie ID:<br>
-     <input type="value" name="Movie_idMovie" value=""><br \>
-     Genre:<br>
-     <input type="text" name="Genre" value=""><br><br \>
-     <input type="submit" value="Delete">
+<h1>Room</h1>
+<h2>Add Room</h2>
+<form action="/addRoom" method="post">
+     Room Number:<br>
+     <input type="value" name="RoomNumber" value=""><br>
+     Capacity:<br>
+     <input type="value" name="Capacity" value=""><br><br />
+     <input type="submit" value="Add">
 </form>
-<div><a href="/genre">Back</a></div>
+<div><a href="/room">Back</a></div>
 </center>
 </body>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>

@@ -154,6 +154,79 @@ def listgenrepage():
     cnx.close()
     return render_template('listgenre.html', genres=genres)
 
+# room
+@app.route("/room")
+def roompage():
+    return render_template('room.html')
+
+# add room
+@app.route("/addroom")
+def addroompage():
+    return render_template('addroom.html')
+
+@app.route("/addRoom", methods=["POST"])
+def addRoom():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    insert_stmt = (
+        "INSERT INTO `TheatreRoom` (RoomNumber,Capacity)"
+        "VALUES (%s, %s)"
+        )
+    data = (request.form['RoomNumber'], request.form['Capacity'])
+    cursor.execute(insert_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('addroom.html', RoomNmber=request.form['RoomNumber'], 
+        Capacity=request.form['Capacity'])
+
+# delete room
+@app.route("/deleteroom")
+def deleteroompage():
+    return render_template('deleteroom.html')
+
+@app.route("/deleteRoom", methods=["POST"])
+def deleteRoom():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    delete_stmt = (
+        "DELETE FROM `TheatreRoom` WHERE RoomNumber=%s" #single value
+        )
+    data = (request.form['RoomNumber'],) # force string to become tuple
+    cursor.execute(delete_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('deleteroom.html', RoomNumber=request.form['RoomNumber'])
+
+# update room
+@app.route("/updateroom")
+def updateroompage():
+    return render_template('updateroom.html')
+
+@app.route("/updateRoom", methods=["POST"])
+def updateRoom():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    update_stmt = (
+        "UPDATE `TheatreRoom` SET Capacity=%s WHERE RoomNumber=%s"
+        )
+    data = (request.form['Capacity'], request.form['RoomNumber'])
+    cursor.execute(update_stmt, data)
+    cnx.commit()
+    cnx.close()
+    return render_template('updateroom.html', Capacity=request.form['Capacity'], 
+        RoomNumber=request.form['RoomNumber'])
+
+# list room
+@app.route("/listroom")
+def listroompage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from `TheatreRoom` ORDER BY RoomNumber")
+    cursor.execute(query)
+    rooms=cursor.fetchall()
+    cnx.close()
+    return render_template('listroom.html', rooms=rooms)
+
 
 
 if __name__ == "__main__":

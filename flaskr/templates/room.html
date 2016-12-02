@@ -1,17 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>Room Menu</title>
+	<meta charset="utf-8">
+	<title>Room Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
 <h1>Room Menu</h1>
-<div><a href="addroom.html">Add Room</a></div>
-<div><a href="deleteroom.html">Delete Room</a></div>
-<div><a href="updateroom.html">Update Room</a></div>
-<div><a href="divstroom.html">divst Room</a></div>
-<div><a href="backend.html">Back</a></div>
+<div>
+	<p class="addroom">
+		<a href="/addroom"><class="btn btn-lg btn-default">Add Room</a>
+	</p>
+	<p class="deleteroom">
+		<a href="/deleteroom"><class="btn btn-lg btn-default">Delete Room</a>
+	</p>
+	<p class="updateroom">
+		<a href="/updateroom"><class="btn btn-lg btn-default">Update Room</a>
+	</p>
+	<p class="listroom">
+		<a href="/listroom"><class="btn btn-lg btn-default">List Room</a>
+	</p>
+	<p class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</p>
+
+</div>
 </center>
 </body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
 </html>
