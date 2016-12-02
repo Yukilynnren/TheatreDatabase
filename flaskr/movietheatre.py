@@ -116,12 +116,12 @@ def addGenre():
         "INSERT INTO `Genre` (Genre, Movie_idMovie)"
         "VALUES (%s, %s)"
         )
-    data = (request.form['Movie_idMovie'], request.form['Genre'])
+    data = (request.form['Genre'], request.form['Movie_idMovie'])
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('addgenre.html', Movie_idMovie=request.form['Movie_idMovie'], 
-        MovieName=request.form['Genre'])
+    return render_template('addgenre.html', Movie_idMovie=request.form['Genre'], 
+        MovieName=request.form['Movie_idMovie'])
 
 # delete genre
 @app.route("/deletegenre")
@@ -133,13 +133,14 @@ def deleteGenre():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     delete_stmt = (
-        "DELETE FROM `Genre` WHERE Movie_idMovie=%s" #single value
+        "DELETE FROM `Genre` WHERE Movie_idMovie=%s and Genre=%s" #single value
         )
-    data = (request.form['Movie_idMovie'],) # force string to become tuple
+    data = (request.form['Movie_idMovie'], request.form['Genre']) # force string to become tuple
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('deletegenre.html', Movie_idMovie=request.form['Movie_idMovie'])
+    return render_template('deletegenre.html', Movie_idMovie=request.form['Movie_idMovie'],
+        Genre=request.form['Genre'])
 
 
 # list genre
