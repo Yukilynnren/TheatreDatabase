@@ -382,6 +382,23 @@ def listcustomerpage():
     return render_template('listcustomer.html', customers=customers)
 
 
+# addtend
+@app.route("/attend")
+def attendpage():
+    return render_template('attend.html')
+
+# list attend
+@app.route("/listattend")
+def listattendpage():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("SELECT * from `Attend`")
+    cursor.execute(query)
+    attends=cursor.fetchall()
+    cnx.close()
+    return render_template('listattend.html', attends=attends)
+
+
 
 
 

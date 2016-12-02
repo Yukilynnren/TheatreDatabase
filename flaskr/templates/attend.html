@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <title>Attend List</title>
+    <meta charset="utf-8">
+    <title>Attend List</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
 </head>
 <body>
 <center>
 <h1>Attend List</h1>
-<form action="/submit" method="get">
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+<form action="/listattend" method="get">
   <input type="checkbox" name="listaddtend" value="withCustomer">Customer
   <input type="checkbox" name="listaddtend" value="withShowing">Showing
-  <input type="checkbox" name="listaddtend" value="withMovie">Movie <br>
+  <input type="checkbox" name="listaddtend" value="withMovie">Movie <br><br />
   sorted by
   <select>
 	<option value="high2low">High to Low</option>
 	<option value="low2high">Low to High</option>
-  </select><br>
+  </select><br><br />
   <input type="submit" value="Submit">
+  <button class="back">
+    <a href="/backend"><class="btn btn-lg btn-default">Back</a>
+  </button>
 </form>
-<div><a href="backend.html">Back</a></div>
 </center>
 </body>
 </html>
