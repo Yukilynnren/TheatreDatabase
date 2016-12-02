@@ -46,7 +46,7 @@ def addMovie():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listmovie.html', idMovie=request.form['idMovie'], 
+    return render_template('addmovie.html', idMovie=request.form['idMovie'], 
         MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
 
 # delete movie
@@ -65,7 +65,7 @@ def deleteMovie():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listmovie.html', MovieName=request.form['MovieName'])
+    return render_template('deletemovie.html', MovieName=request.form['MovieName'])
 
 # update movie
 @app.route("/updatemovie")
@@ -79,11 +79,11 @@ def updateMovie():
     update_stmt = (
         "UPDATE `Movie` SET MovieName=%s, MovieYear=%s WHERE idMovie=%s"
         )
-    data = (request.form['idMovie'], request.form['MovieName'], request.form['MovieYear'])
+    data = (request.form['MovieName'], request.form['MovieYear'], request.form['idMovie'])
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listmovie.html', idMovie=request.form['idMovie'], 
+    return render_template('updatemovie.html', idMovie=request.form['idMovie'], 
         MovieName=request.form['MovieName'], MovieYear=request.form['MovieYear'])
 
 # list movie
@@ -120,7 +120,7 @@ def addGenre():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listgenre.html', Movie_idMovie=request.form['Genre'], 
+    return render_template('addgenre.html', Movie_idMovie=request.form['Genre'], 
         MovieName=request.form['Movie_idMovie'])
 
 # delete genre
@@ -133,13 +133,13 @@ def deleteGenre():
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor()
     delete_stmt = (
-        "DELETE FROM `Genre` WHERE Movie_idMovie=%s and Genre=%s" #single value
+        "DELETE FROM `Genre` WHERE Movie_idMovie=%s and Genre=%s" 
         )
-    data = (request.form['Movie_idMovie'], request.form['Genre']) # force string to become tuple
+    data = (request.form['Movie_idMovie'], request.form['Genre']) 
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listgenre.html', Movie_idMovie=request.form['Movie_idMovie'],
+    return render_template('deletegenre.html', Movie_idMovie=request.form['Movie_idMovie'],
         Genre=request.form['Genre'])
 
 
@@ -176,13 +176,13 @@ def addRoom():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listroom.html', RoomNmber=request.form['RoomNumber'], 
+    return render_template('addroom.html', RoomNmber=request.form['RoomNumber'], 
         Capacity=request.form['Capacity'])
 
 # delete room
 @app.route("/deleteroom")
 def deleteroompage():
-    return render_template('listroom.html')
+    return render_template('deleteroom.html')
 
 @app.route("/deleteRoom", methods=["POST"])
 def deleteRoom():
@@ -195,7 +195,7 @@ def deleteRoom():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listroom.html', RoomNumber=request.form['RoomNumber'])
+    return render_template('deleteroom.html', RoomNumber=request.form['RoomNumber'])
 
 # update room
 @app.route("/updateroom")
@@ -213,7 +213,7 @@ def updateRoom():
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listroom.html', Capacity=request.form['Capacity'], 
+    return render_template('updateroom.html', Capacity=request.form['Capacity'], 
         RoomNumber=request.form['RoomNumber'])
 
 # list room
@@ -251,7 +251,7 @@ def addShowing():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listshowing.html', idShowing=request.form['idShowing'], ShowingDateTime=request.form['ShowingDateTime'],
+    return render_template('addshowing.html', idShowing=request.form['idShowing'], ShowingDateTime=request.form['ShowingDateTime'],
         Movie_idMovie=request.form['Movie_idMovie'], TheatreRoom_RoomNumber=request.form['TheatreRoom_RoomNumber'],
         TicketPrice=request.form['TicketPrice'])
 
@@ -271,7 +271,7 @@ def deleteShowing():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listshowing.html', idShowing=request.form['idShowing'])
+    return render_template('deleteshowing.html', idShowing=request.form['idShowing'])
 
 # update showing
 @app.route("/updateshowing")
@@ -285,11 +285,11 @@ def updateShowing():
     update_stmt = (
         "UPDATE `Showing` SET ShowingDateTime=%s, TicketPrice=%s WHERE idShowing=%s"
         )
-    data = (request.form['idShowing'], request.form['ShowingDateTime'], request.form['TicketPrice'])
+    data = (request.form['ShowingDateTime'], request.form['TicketPrice'], request.form['idShowing'])
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listshowing.html', idShowing=request.form['idShowing'],
+    return render_template('updateshowing.html', idShowing=request.form['idShowing'],
         ShowingDateTime=request.form['ShowingDateTime'],
         TicketPrice=request.form['TicketPrice'])
 
@@ -328,7 +328,7 @@ def addCustomer():
     cursor.execute(insert_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'],
+    return render_template('addcustomer.html', idCustomer=request.form['idCustomer'],
         FirstName=request.form['FirstName'], LastName=request.form['LastName'],
         EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
 
@@ -348,7 +348,7 @@ def deleteCustomer():
     cursor.execute(delete_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'])
+    return render_template('deletecustomer.html', idCustomer=request.form['idCustomer'])
 
 # update customer
 @app.route("/updatecustomer")
@@ -362,12 +362,11 @@ def updateCustomer():
     update_stmt = (
         "UPDATE `Customer` SET EmailAddress=%s, Sex=%s WHERE idCustomer=%s"
         )
-    data = (request.form['idCustomer'],
-        request.form['EmailAddress'], request.form['Sex'])
+    data = (request.form['EmailAddress'], request.form['Sex'], request.form['idCustomer'])
     cursor.execute(update_stmt, data)
     cnx.commit()
     cnx.close()
-    return render_template('listcustomer.html', idCustomer=request.form['idCustomer'],
+    return render_template('updatecustomer.html', idCustomer=request.form['idCustomer'],
         EmailAddress=request.form['EmailAddress'], Sex=request.form['Sex'])
 
 # list customer
