@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Genre Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Genre</h1>
+<h2>List Genre</h2>
+<div>
+<table border="2">
+<tr>
+	<th> Genre </th>
+	<th> Movie Name </th>
+</tr>
+{% for genre in genres %}
+	<tr>
+    <span><td><b>{{ genre.1 }}</b> </td><td><i>{{ genre.0 }}</i></td></span>
+    </tr>
+{% endfor %}
+</table><br>
+</div>
+<div><a href="/genre">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

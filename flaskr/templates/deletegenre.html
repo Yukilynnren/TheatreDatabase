@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Movie Menu</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Genre</h1>
+<h2>Delete Genre</h2>
+<p>
+    Delete a genre from a movie
+</p>
+<form action="/deleteGenre" method="post">
+	 Movie ID:<br>
+     <input type="value" name="Movie_idMovie" value=""><br \>
+     Genre:<br>
+     <input type="text" name="Genre" value=""><br><br \>
+     <input type="submit" value="Delete">
+</form>
+<div><a href="/genre">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

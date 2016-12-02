@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Movie Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Movie</h1>
+<h2>Update Movie</h2>
+<p>
+    Update a Movie's Name and Released Year by its ID
+</p>
+<form action="/updateMovie" method="post">
+     Movie ID:<br>
+     <input type="value" name="idMovie" value=""><br>
+     Movie Name:<br>
+     <input type="text" name="MovieName" value=""><br>
+     Year Released:<br>
+     <input type="value" name="MovieYear" value=""><br><br>
+     <input type="submit" value="Update">
+</form>
+<div><a href="/movie">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

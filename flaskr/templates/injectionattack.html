@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>SQL Injection attack</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+  <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">  
+</head>
+<body>
+<center>
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+	<form action="/sqlinjectionattack" method="post">
+		 Last name:<br>
+		 <input type="text" name="LastName"><br><br />
+		 <input type="submit" class="btn btn-warning" value="SQL Injection Attack!">
+	 </form>
+</div><br><br />
+<button class="back">
+    <a href="/frontend"><class="btn btn-lg btn-default">Back</a>
+</button>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

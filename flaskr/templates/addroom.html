@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Room Menu</title>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Room</h1>
+<h2>Add Room</h2>
+<form action="/addRoom" method="post">
+     Room Number:<br>
+     <input type="value" name="RoomNumber" value=""><br>
+     Capacity:<br>
+     <input type="value" name="Capacity" value=""><br><br />
+     <input type="submit" value="Add">
+</form>
+<div><a href="/room">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

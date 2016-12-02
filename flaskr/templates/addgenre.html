@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Genre Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Genre</h1>
+<h2>Add Genre</h2>
+<form action="/addGenre" method="post">
+     Movie ID:<br>
+     <input type="value" name="Movie_idMovie" value=""><br>
+     Genre Name:<br>
+     <input type="text" name="Genre" value=""><br><br />
+     <input type="submit" value="Add">
+</form>
+<div><a href="/genre">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

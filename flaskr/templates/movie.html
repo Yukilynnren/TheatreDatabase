@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Movie Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Movie Menu</h1>
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+<div>
+	<button class="addmovie">
+		<a href="/addmovie"><class="btn btn-lg btn-default">Add Movie</a>
+	</button>
+	<button class="deletemovie">
+		<a href="/deletemovie"><class="btn btn-lg btn-default">Delete Movie</a>
+	</button>
+	<button class="updatemovie">
+		<a href="/updatemovie"><class="btn btn-lg btn-default">Update Movie</a>
+	</button>
+	<button class="listmovie">
+		<a href="/listmovie"><class="btn btn-lg btn-default">List Movie</a>
+	</button>
+	<button class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</button>
+
+</div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

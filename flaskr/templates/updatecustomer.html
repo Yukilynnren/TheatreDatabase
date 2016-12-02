@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Customer Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Customer</h1>
+<h2>Update Customer</h2>
+<p>
+    Update a Customer by its ID
+</p>
+<form action="/updateCustomer" method="post">
+     Customer ID:<br>
+     <input type="value" name="idCustomer" value=""><br>
+     Email Address:<br>
+     <input type="text" name="EmailAddress" value=""><br>
+     Sex:<br>
+     <input type="text" name="Sex" value=""><br><br />
+     <input type="submit" value="Update">
+</form>
+<div><a href="/staff_customer">Back</a></div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

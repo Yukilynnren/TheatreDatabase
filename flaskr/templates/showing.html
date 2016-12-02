@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Showing Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Showing Menu</h1>
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+<div>
+	<button class="addshowing">
+		<a href="/addshowing"><class="btn btn-lg btn-default">Add Showing</a>
+	</button>
+	<button class="deleteshowing">
+		<a href="/deleteshowing"><class="btn btn-lg btn-default">Delete Showing</a>
+	</button>
+	<button class="updateshowing">
+		<a href="/updateshowing"><class="btn btn-lg btn-default">Update Showing</a>
+	</button>
+	<button class="listshowing">
+		<a href="/listshowing"><class="btn btn-lg btn-default">List Showing</a>
+	</button>
+	<button class="back">
+		<a href="/backend"><class="btn btn-lg btn-default">Back</a>
+	</button>
+
+</div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

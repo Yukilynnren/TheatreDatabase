@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Staff Menu</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+</head>
+<body>
+<center>
+<h1>Staff Menu</h1>
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+<div>
+	<button class="movie">
+		<a href="/movie"><class="btn btn-lg btn-default">Movie</a>
+	</button>
+	<button class="genre">
+		<a href="/genre"><class="btn btn-lg btn-default">Genre</a>
+	</button>
+	<button class="room">
+		<a href="/room"><class="btn btn-lg btn-default">Room</a>
+	</button>
+	<button class="showing">
+		<a href="/showing"><class="btn btn-lg btn-default">Showing</a>
+	</button>
+	<button class="staff_customer">
+		<a href="/staff_customer"><class="btn btn-lg btn-default">Customer</a>
+	</button>
+	<button class="attend">
+		<a href="/attend"><class="btn btn-lg btn-default">Attend</a>
+	</button>
+	<button class="back">
+		<a href="/"><class="btn btn-lg btn-default">Back</a>
+	</button>
+
+</div>
+</center>
+</body>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+</html>

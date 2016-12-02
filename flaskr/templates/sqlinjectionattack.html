@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<title>SQL Injection attack</title>
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap-theme.min.css')}}">
+	<link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">	
+</head>
+<body>
+<center>
+<div>
+<img src ="{{url_for('static', filename='gif/bilibili.gif')}}">
+</div><br />
+			<button class="attack">
+			<a href="/injectionattack"><class="btn btn-warning">SQL Injection attack</a></button>
+			<button class="active">
+            <a href="#"><class="btn btn-wanring">SQL Injection attack Result</a></button>
+			<p>SQL Injection attack Results</p>
+		</div>
+	<table>
+		<tr>
+			<th>CustomerID</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Sex</th>
+		</tr>
+		{% for customer in customers %}
+		<tr>
+			<th>{{ customer.0 }}</th>
+			<th>{{ customer.1 }}</th> 
+			<th>{{ customer.2 }}</th>
+			<th>{{ customer.3 }}</th>
+			<th>{{ customer.4 }}</th>
+		{% endfor %}
+		</tr>
+	</table>
+	</div><br><br />
+	<button class="back">
+		<a href="/frontend"><class="btn btn-lg btn-default">Back</a>
+	</button>
+ </center>
+ </body>
+ <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+ </html>
